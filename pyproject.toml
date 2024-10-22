@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "app"
+version = "1.0.0"
+dependencies = [
+    "arrow",
+    "bs4",
+    "Flask",
+    "html5validator",
+    "pycodestyle",
+    "pydocstyle",
+    "pylint",
+    "pytest",
+    "pytest-mock",
+    "requests",
+]
+requires-python = ">=3.10"
+
+[tool.setuptools]
+packages = ["app"]
+
+[tool.pylint."messages control"]
+disable = ["cyclic-import"]

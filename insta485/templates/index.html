@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta485</title>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+
+</head>
+
+
+<body>
+    <div class="upper-left-corner">
+        <!-- If you have a logo, use an img tag instead -->
+        <a href="/">
+            <img src="/static/images/Instagram.png" alt="Instagram Logo">
+
+        </a>
+        <span class="vertical-line"></span>
+
+        <span class="text-after-line">
+            Insta485
+        </span>
+
+        <span class="right-text">
+            
+            <a href="/explore/" style="color: black;">explore</a> | <a href="/users/{{logname}}/" style="color: black;"> {{logname}} </a>
+
+        </span>
+
+        
+
+    </div>
+    
+    <div class="horizontal-line"></div>
+
+
+    {% for post in posts %}
+    <div class="post">  
+        <div class="header">   
+            <a href="/users/{{post.owner}}/">
+            <img class = "userimg" src={{post.owner_img_url}} alt="{{post.owner}}">
+            </a>
+            <a href="/users/{{post.owner}}/"><span class = "username">{{post.owner}}</span></a>
+            <a href="/posts/{{post.postid}}/">
+                <span class = "timestamp">{{post.timestamp}}</span>
+            </a>
+        </div>
+        <div>
+            <img class  = "postimg" src= {{post.img_url}} alt="post img" >
+        </div>
+        <div class = "text">
+            <p>
+                {% if post.likes == 1 %}
+                    1 like
+                {% else %}
+                    {{ post.likes }} likes
+                {% endif %}
+            </p>
+            {% for comment in post.comments %}
+                <p><a href="/users/{{comment.owner}}/">{{comment.owner}}</a> <span>{{comment.text}}</span></p>
+            {% endfor %}
+        
+            {% if post.likeornot == 1 %}
+            <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="unlike"/>
+                <input type="hidden" name="postid" value="{{post.postid}}"/>
+                <input type="submit" name="unlike" value="unlike"/>
+            </form>
+            {% else %}
+            <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            
+            <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="like"/>
+                <input type="hidden" name="postid" value="{{post.postid}}"/>
+                <input type="submit" name="like" value="like"/>
+            </form>
+            {% endif %}
+
+            <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            <form action="/comments/?target=/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="create"/>
+                <input type="hidden" name="postid" value="{{post.postid}}"/>
+                <input type="text" name="text" required/>
+                <input type="submit" name="comment" value="comment"/>
+            </form>
+
+        </div>
+    </div>
+    {% endfor %}
+    
+
+
+
+    
+
+
+
+</body>
+</html>

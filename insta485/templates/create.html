@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta485</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+    <a href = "/accounts/login/">
+        <p style="text-align: center;"> Already have an account? Please login!</p>
+    </a>
+    <!-- DO NOT CHANGE THIS (aside from styling) -->
+    <form class =  "form" action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required placeholder="choose a file">
+        <input type="text" name="fullname" required placeholder="fullname">
+        <input type="text" name="username" required placeholder="username">
+        <input type="text" name="email" required placeholder="email">
+        <input type="password" name="password" required placeholder="enter password">
+        <input type="submit" name="signup" value="sign up"/>
+        <input type="hidden" name="operation" value="create"/>
+    </form>
+    <a href = "/accounts/login/">
+        <p style="text-align: center;">Already have an account? Please login!</p>
+    </a>
+</body>
+</html>

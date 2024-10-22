@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta485</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+
+<body>
+    <!-- DO NOT CHANGE THIS (aside from styling) -->
+    <form class =  "form" action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+        <input type="text" name="username" required placeholder="enter username">
+        <input type="password" name="password" required placeholder="enter password">
+        <input type="submit" value="login"/>
+        <input type="hidden" name="operation" value="login"/>
+    </form>
+
+    <a href = "/accounts/create/">
+        <p style="text-align: center;"> New user? Create an account</p>
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta485</title>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+
+</head>
+
+<body>
+    <div class="upper-left-corner">
+        <!-- If you have a logo, use an img tag instead -->
+        <a href="/">
+            <img src="/static/images/Instagram.png" alt="Instagram Logo">
+
+        </a>
+        <span class="vertical-line"></span>
+
+        <span class="text-after-line">
+            Insta485
+        </span>
+
+        <span class="right-text">
+            
+            <a href="/explore/" style="color: black;">explore</a> | <a href="/users/{{logname}}/" style="color: black;"> {{logname}} </a>
+
+        </span>
+
+    </div>
+
+    <div class="horizontal-line"></div>
+    <div>
+        <p>{{logname}}</p>
+        <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+            <input type="submit" name="delete" value="confirm delete account"/>
+            <input type="hidden" name="operation" value="delete"/>
+        </form>
+    </div>
+</body>

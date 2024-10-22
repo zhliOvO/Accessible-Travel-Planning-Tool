@@ -1,0 +1,58 @@
+#!/bin/bash
+# insta485db
+
+
+set -Eeuo pipefail
+
+usage() {
+  echo "Usage: $0 (create|destroy|reset|dump)"
+}
+
+create_db() {
+  if [ -f var/insta485.sqlite3 ]; then
+    echo "Error: database already exists"
+    exit 1
+  else
+    mkdir -p var/uploads
+    sqlite3 var/insta485.sqlite3 < sql/schema.sql
+    sqlite3 var/insta485.sqlite3 < sql/data.sql
+    cp -r sql/uploads/* var/uploads/
+  fi
+}
+
+destroy_db() {
+  rm -rf var/insta485.sqlite3 var/uploads
+}
+
+dump_db() {
+  sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM comments'
+  sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM following'
+  sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM likes'
+  sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM posts'
+  sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM users'
+}
+
+if [ $# -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+case $1 in
+  "create")
+    create_db
+    ;;
+  "destroy")
+    destroy_db
+    ;;
+  "reset")
+    destroy_db
+    create_db
+    ;;
+  "dump")
+    dump_db
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
+esac

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta485</title>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+
+</head>
+
+<body>
+    <div class="upper-left-corner">
+        <!-- If you have a logo, use an img tag instead -->
+        <a href="/">
+            <img src="/static/images/Instagram.png" alt="Instagram Logo">
+
+        </a>
+        <span class="vertical-line"></span>
+
+        <span class="text-after-line">
+            Insta485
+        </span>
+
+        <span class="right-text">
+            
+            <a href="/explore/" style="color: black;">explore</a> | <a href="/users/{{logname}}/" style="color: black;"> {{logname}} </a>
+
+        </span>
+
+    </div>
+
+    <div class = "account-settings">
+        <img class = "userimg" src={{user_img_url}} alt="{{owner}}">
+        <div class = "username">
+            {{username}}
+        </div>
+        <div>
+            <form classs='form' action="/accounts/?target = /accounts/edit/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*"/>
+                <input type="text" name="fullname" value="enter full name" required/>
+                <input type="text" name="email" value="enter email" required/>
+                <input type="submit" name="update" value="submit"/>
+                <input type="hidden" name="operation" value="edit_account"/>
+            </form>
+        </div>
+        <a href = "/accounts/password/">
+            <p style="text-align: center;">Change Password</p>
+        </a>
+
+        <a href = "/accounts/delete/">
+            <p style="text-align: center;">Delete account</p>
+        </a>
+    </div>
+</body>

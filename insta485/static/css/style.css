@@ -1,0 +1,236 @@
+body{
+    a {
+        text-decoration: none; 
+        color: black; 
+        font-weight: bold; 
+
+    }
+}
+
+
+
+.upper-left-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 100px;
+    display: flex; 
+    align-items: center; 
+}
+
+
+.upper-left-corner img {
+    width: 100px;
+    height: auto;
+}
+
+.vertical-line {
+    width: 1px; 
+    height: 100px; 
+    background-color: #000; 
+    margin-left: 50px; 
+}
+
+
+.text-after-line {
+    margin-left: 50px; 
+    font-size: 30px;
+}
+.right-text {
+    margin-left: 500px; 
+    font-size: 20px;
+}
+
+.horizontal-line {
+    border: none; 
+    height: 2px; 
+    background-color: #000000; 
+    margin-top: 250px; 
+}
+
+
+.post{
+    position:relative; 
+    border-style: solid;
+    border-color: #000;
+    height: auto;
+    width: 500px;
+    margin-top: 50px;
+    margin-left: 400px;
+    margin-right: 400px; 
+
+}
+
+.postpage{
+
+    position:relative; 
+    border-style: solid;
+    border-color: #000;
+    height: auto;
+    width: 1000px;
+    margin-top: 50px;
+    display: flex;
+    padding: 10px;
+    margin-left: 100px;
+}
+.userimg{
+    height: 60px;
+    width: auto;
+}
+
+.timestamp{
+    /* text-align: justify; */
+    margin-left : 200px;
+    color: #b5b3b3;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.username{
+    margin-left: 10px;
+}
+
+.postimg{
+
+    height: auto;
+    width: 500px;
+}
+
+.text{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.userpage{
+    position:relative; 
+    margin-left: 100px;
+    margin-top: 100px;
+
+}
+
+.userpage .username{
+    font-size: 28px;
+}
+
+.userpage .text{
+    margin-top: 10px;
+}
+
+.userpage .images{
+    display: flex;
+    align-items: center; 
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.userpage .imagelink{
+    flex: 1 0 45%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.userpage .image{
+    margin-left: 20px;
+    width: 400px;
+    height: auto;
+}
+
+.bigboldtext{
+    font-weight: bold;
+    font-size: 28px;
+    margin-left: 140px;
+}
+
+.followerinfo{
+    position:relative;
+    border: solid;
+    border-bottom: solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    margin-left: 140px;
+    margin-right: 140px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.followerinfo .userimg {
+    width: 50px;
+}   
+
+.followerinfo .username {
+    margin-left: 10px;
+}
+
+.followerinfo .followingornot {
+    color: #a7a6a6;
+    margin-left:60%;
+}
+
+.postinfo{
+    margin-left: 10px;
+}
+
+.form {
+
+    margin: 0 auto;
+    width: 300px; 
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.form input {
+    
+    width: 100%;
+    margin: 10px -10px;
+    padding: 10px;
+}
+
+.form input[type="submit"] {
+
+    background-color: #4CAF50;
+    width: 300px; 
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.account-settings {
+    margin-left: 100px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    border-radius: 50%; /* Circular image */
+    margin-bottom: 20px;
+}
+
+.account-settings form {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Adjust as needed */
+}
+
+.account-settings input[type="file"],
+.account-settings input[type="text"],
+.account-settings input[type="email"],
+.account-settings input[type="submit"] {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# insta485run
+#
+# Clean, build and start server
+#
+# Andrew DeOrio <awdeorio@umich.edu>
+
+
+# Stop on errors, print commands
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+FILE='var/insta485.sqlite3'
+
+if [ ! -f "$FILE" ]; then
+    echo "Error: File $FILE does not exist."
+    echo "Try: ./bin/insta485db create"
+    exit 1
+fi
+
+
+# Run the Flask development server
+flask --app insta485 --debug run --host 0.0.0.0 --port 8000

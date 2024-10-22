@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+# Print commands before executing them
+set -x
+set -Eeuo pipefail
+
+# Run pycodestyle
+pycodestyle insta485
+
+# Run pydocstyle
+pydocstyle insta485
+
+# Run pylint
+pylint insta485
+
+# Run pytest for unit tests
+pytest -v tests

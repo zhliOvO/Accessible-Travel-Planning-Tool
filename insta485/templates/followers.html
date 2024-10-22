@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insta485</title>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+</head>
+
+
+<body>
+    <div class="upper-left-corner">
+        <!-- If you have a logo, use an img tag instead -->
+        <a href="/">
+            <img src="/static/images/Instagram.png" alt="Instagram Logo">
+        </a>
+        <span class="vertical-line"></span>
+
+        <span class="text-after-line">
+            Insta485
+        </span>
+
+        <span class="right-text">
+            
+            <a href="/explore/" style="color: black;">explore</a> | <a href="/users/{{logname}}/" style="color: black;"> {{logname}} </a>
+
+        </span>
+
+        
+
+    </div>
+    
+    <div class="horizontal-line"></div>
+
+    <p class="bigboldtext">
+        Followers
+    </p>
+    {%for follower in followers%}
+    <div class="followerinfo">   
+        <a href="/users/{{follower.username}}/">
+        <img class = "userimg" src={{follower.user_img_url}} alt="{{follower.username}}">
+        </a>
+        <a href="/users/{{follower.username}}/"><span class = "username"> {{follower.username}} </span></a>
+        <span class = "followingornot">
+            {% if follower.username == logname %}
+
+            {% elif follower.logname_follows_username%}
+                following
+            {% else %}
+                not following
+            {% endif %}
+        </span>
+        <span>
+            {% if follower.username == logname %}
+
+            {% elif follower.logname_follows_username%}
+                <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            <form action="/following/?target=/users/{{logname}}/followers/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="unfollow" value="unfollow"/>
+                <input type="hidden" name="username" value="{{follower.username}}"/>
+                <input type="hidden" name="operation" value="unfollow"/>
+            </form>
+
+            {% else %}
+                <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+            <form action="/following/?target=/users/{{logname}}/followers/" method="post" enctype="multipart/form-data">
+                <input type="submit" name="follow" value="follow"/>
+                <input type="hidden" name="username" value="{{follower.username}}"/>
+                <input type="hidden" name="operation" value="follow"/>
+            </form>
+
+            {% endif %}
+        </span>
+    </div>
+    {%endfor%}
+
+</body>
+</html>
