@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search bar</title>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+  <select id="disabilityType" name="disabilityType">
+    <option value="Wheelchair user">Wheelchair user</option>
+    <option value="Visual impairment">Visual impairment</option>
+    <option value="Hearing impairment">Hearing impairment</option>
+  </select>
+  
+  <div id="services">
+    <!-- Checkboxes will be dynamically loaded here -->
+  </div>
+
+  <button id="searchHotels">Search Hotels</button>
+  
+  <div id="hotels">
+    <!-- Hotel results will be displayed here -->
+  </div>
+  
+  <script>
+    const hotelsDiv = document.getElementById('hotels');
+
+    document.getElementById('disabilityType').addEventListener('change', function() {
+      const selectedType = this.value;
+      hotelsDiv.innerHTML = ''; // Clear hotel results on change
+      fetch(`/get_services?disability_type=${selectedType}`)
+        .then(response => response.json())
+        .then(data => {
+          const servicesDiv = document.getElementById('services');
+          servicesDiv.innerHTML = ''; // Clear existing checkboxes
+          data.forEach(service => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'services';
+            checkbox.value = service.feature_name;
+            const label = document.createElement('label');
+            label.textContent = service.feature_name;
+            servicesDiv.appendChild(checkbox);
+            servicesDiv.appendChild(label);
+            servicesDiv.appendChild(document.createElement('br'));
+          });
+        });
+    });
+
+    document.getElementById('searchHotels').addEventListener('click', function() {
+      const selectedServices = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+        .map(checkbox => checkbox.value);
+
+      hotelsDiv.innerHTML = ''; // Clear hotel results before fetching new ones
+
+      fetch('/search_hotels', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ services: selectedServices })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.length === 0) {
+          hotelsDiv.textContent = 'No hotels found.';
+        } else {
+          data.forEach(hotel => {
+            const hotelItem = document.createElement('p');
+            hotelItem.textContent = hotel.hotel_name;
+            hotelsDiv.appendChild(hotelItem);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

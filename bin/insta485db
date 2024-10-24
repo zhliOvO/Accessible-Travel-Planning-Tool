@@ -9,15 +9,14 @@ usage() {
 }
 
 create_db() {
-  if [ -f var/insta485.sqlite3 ]; then
-    echo "Error: database already exists"
-    exit 1
-  else
-    mkdir -p var/uploads
-    sqlite3 var/insta485.sqlite3 < sql/schema.sql
-    sqlite3 var/insta485.sqlite3 < sql/data.sql
-    cp -r sql/uploads/* var/uploads/
-  fi
+  rm -rf var/insta485.sqlite3 var/uploads
+  mkdir -p var/uploads
+  sqlite3 var/insta485.sqlite3 < sql/dropTables.sql
+  sqlite3 var/insta485.sqlite3 < sql/createTables.sql
+  sqlite3 var/insta485.sqlite3 < sql/schema.sql
+  sqlite3 var/insta485.sqlite3 < sql/insertData.sql
+  sqlite3 var/insta485.sqlite3 < sql/data.sql
+  cp -r sql/uploads/* var/uploads/
 }
 
 destroy_db() {

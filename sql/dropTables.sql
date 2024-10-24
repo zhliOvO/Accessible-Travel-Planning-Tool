@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS HotelAccessibility;
+DROP TABLE IF EXISTS AccessibilityFeatures;
+DROP TABLE IF EXISTS Hotels;
+DROP TABLE IF EXISTS Users;
+

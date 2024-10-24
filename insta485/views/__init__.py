@@ -8,3 +8,4 @@ from insta485.views.following import *
 from insta485.views.accounts import *
 from insta485.views.explore import *
 from insta485.views.users import *
+from insta485.views.search import *
