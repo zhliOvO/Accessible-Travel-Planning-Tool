@@ -7,8 +7,15 @@
 <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
+  <div style="position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column;">
+    <button class="text-size-button" data-size="default">Default</button>
+    <button class="text-size-button" data-size="large">Large</button>
+    <button class="text-size-button" data-size="extra-large">Extra Large</button>
+  </div>
+
   <select id="disabilityType" name="disabilityType">
-    <option value="Wheelchair user">Wheelchair user</option>
+    <option value="" selected disabled>Select a disability type</option>
+    <option value="Movement impairment">Movement impairment</option>
     <option value="Visual impairment">Visual impairment</option>
     <option value="Hearing impairment">Hearing impairment</option>
   </select>
@@ -25,6 +32,14 @@
   
   <script>
     const hotelsDiv = document.getElementById('hotels');
+    const textSizeButtons = document.querySelectorAll('.text-size-button');
+
+    textSizeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        document.body.className = ''; // Reset any existing class
+        document.body.classList.add(this.getAttribute('data-size'));
+      });
+    });
 
     document.getElementById('disabilityType').addEventListener('change', function() {
       const selectedType = this.value;
@@ -69,6 +84,7 @@
           data.forEach(hotel => {
             const hotelItem = document.createElement('p');
             hotelItem.textContent = hotel.hotel_name;
+            hotelItem.classList.add('large-text');
             hotelsDiv.appendChild(hotelItem);
           });
         }

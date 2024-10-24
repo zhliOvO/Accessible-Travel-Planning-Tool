@@ -11,8 +11,8 @@ INSERT INTO Hotels (hotel_name, postal_code, country, phone_number) VALUES
 ('Desert Escape Lodge', '34567', 'Australia', '567-890-1234');
 
 INSERT INTO AccessibilityFeatures (disability_type, feature_name) VALUES
-('Wheelchair user', 'Wheelchair ramp'),
-('Wheelchair user', 'Accessible bathroom'),
+('Movement impairment', 'Wheelchair ramp'),
+('Movement impairment', 'Accessible bathroom'),
 ('Visual impairment', 'Braille signage'),
 ('Hearing impairment', 'Hearing loops'),
 ('Visual impairment', 'Tactile flooring');
